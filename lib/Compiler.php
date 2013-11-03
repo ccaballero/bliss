@@ -9,22 +9,56 @@ class Compiler
 
         switch ($extension) {
             case 'c':
-                Compiler::compileC($name, $config);
+                return Compiler::compileC($name, $config);
+                break;
+            case 'cpp':
+                return Compiler::compileCPP($name, $config);
+                break;
             case 'java':
-                Compiler::compileJava($name, $config);
+                return Compiler::compileJava($name, $config);
+                break;
         }
     }
 
     public static function compileC($name, $config) {
-        $a = sprintf($config->c_compiler,
+        $command = sprintf($config->c_compiler,
             $config->dir_bin . '/' . $name,
             $config->dir_problems . '/' . $name . '.c'
         );
 
-        exec($a);
+        return Compiler::exec($command);
     }
 
-    public static function compileJavac() {
-        
+    public static function compileCPP($name, $config) {
+        $command = sprintf($config->cpp_compiler,
+            $config->dir_bin . '/' . $name,
+            $config->dir_problems . '/' . $name . '.cpp'
+        );
+
+        return Compiler::exec($command);
+    }
+
+    public static function compileJava($name, $config) {
+        $command = sprintf($config->java_compiler,
+            $config->dir_bin . '/' . $name,
+            $config->dir_bin . '/' . $name,
+            $config->dir_bin . '/' . $name,
+            $config->dir_problems . '/' . $name . '.java'
+        );
+
+        return Compiler::exec($command);
+    }
+
+    private static function exec($command) {
+        ob_start();
+        passthru($command, $code);
+        $return = ob_get_contents();
+        ob_end_clean();
+
+        if ($code == 0) {
+            return array(true, $return);
+        } else {
+            return array(false, $return);
+        }
     }
 }
