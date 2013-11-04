@@ -1,11 +1,10 @@
 #!/bin/sh
 
-#ulimit -t $1
-#ulimit -m $2
+# timeout evaluation
+echo '' > $6
+echo '' > $7
+echo '' > $8
+echo '' > $9
 
-#/usr/bin/time -f "%E" -o $6 $3 < $4 > $5 2> $7 &
-
-perl /var/www/bliss.local/lib/timeout/timeout -t $1 -m $2 $3
-
-#sleep $1
-#kill $! 2> /dev/null
+perl $1 -t $2 -o $7 $4 < $5 > /dev/null 2> $8
+perl $1 -t $2 -m $3 -o $7 $4 < $5 > $6 2> $9

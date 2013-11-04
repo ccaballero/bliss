@@ -22,13 +22,15 @@ class Runner
 
     public static function runC($name, $config) {
         $command = sprintf($config->run_script,
+            $config->timeout_script,
             $config->time_limit,
             $config->memory_limit,
             $config->dir_bin . '/' . $name . '/' . $name,
             $config->dir_input . '/' . $name . '.in',
             $config->dir_bin . '/' . $name . '/' . $name . '.out',
             $config->dir_bin . '/' . $name . '/' . $name . '.time',
-            $config->dir_bin . '/' . $name . '/' . $name . '.err'
+            $config->dir_bin . '/' . $name . '/' . $name . '.err.1',
+            $config->dir_bin . '/' . $name . '/' . $name . '.err.2'
         );
 
         return Runner::exec($command);
@@ -45,9 +47,9 @@ class Runner
         ob_end_clean();
 
         if ($code == 0) {
-            return array(true, $return);
+            return array(true, $return, $code);
         } else {
-            return array(false, $return);
+            return array(false, $return, $code);
         }
     }
 }

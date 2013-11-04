@@ -29,19 +29,21 @@ BEGIN;
     public $time_limit = '2'; // in seconds
     public $memory_limit = '1024'; // in kbytes
 
-    public $run_script = 'run.sh %s %s %s %s %s %s %s';
+    public $run_script = '/lib/run.sh %s %s %s %s %s %s %s %s %s';
+    public $timeout_script = '/lib/timeout/timeout';
 
-    public $dir_bin;
-    public $dir_input;
-    public $dir_output;
-    public $dir_problems;
+    public $dir_bin = '/data/bin';
+    public $dir_input = '/data/input';
+    public $dir_output = '/data/output';
+    public $dir_problems = '/data/problems';
 
     public function __construct() {
-        $this->run_script = APP_PATH . '/lib/' . $this->run_script;
+        $this->run_script = APP_PATH . $this->run_script;
+        $this->timeout_script = APP_PATH . $this->timeout_script;
 
-        $this->dir_bin = APP_PATH . '/data/bin';
-        $this->dir_input = APP_PATH . '/data/input';
-        $this->dir_output = APP_PATH . '/data/output';
-        $this->dir_problems = APP_PATH . '/data/problems';
+        $this->dir_bin = APP_PATH . $this->dir_bin;
+        $this->dir_input = APP_PATH . $this->dir_input;
+        $this->dir_output = APP_PATH . $this->dir_output;
+        $this->dir_problems = APP_PATH . $this->dir_problems;
     }
 }

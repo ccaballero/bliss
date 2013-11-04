@@ -14,9 +14,9 @@ $file = $argv[1];
 $result = Runner::run($file, $config);
 
 if ($result[0]) {
-    echo '[OK]' . PHP_EOL;
+    echo '[OK] ' . $result[2] . PHP_EOL;
 } else {
-    echo '[!!]' . PHP_EOL;
+    echo '[!!] ' . $result[2] . PHP_EOL;
 }
 
 echo str_repeat('#', 80) . PHP_EOL;

@@ -1,0 +1,39 @@
+Tests examples:
+==============
+
+C compiler testing:
+------------------
+
+a.c     -> compilation successfully
+b.c     -> compilation error
+c.c     -> run-time error
+d.c     -> time-limit exceeded
+e.c     -> memomy-limit exceeded
+f.c     -> wrong answer
+
+C++ compiler testing:
+--------------------
+
+g.cpp   -> compilation successfully
+h.cpp   ->
+i.cpp   ->
+j.cpp   ->
+k.cpp   ->
+l.cpp   ->
+
+Java compiler testing:
+---------------------
+
+m.java  ->
+n.java  ->
+o.java  ->
+q.java  ->
+r.java  ->
+s.java  ->
+
+
+EXIT CODES
+
+2   -> missing keyword or command
+137 -> other process has sent you a signal 9
+139 -> segmentation fault
