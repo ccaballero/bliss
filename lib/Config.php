@@ -29,7 +29,7 @@ BEGIN;
     public $time_limit = '2'; // in seconds
     public $memory_limit = '1024'; // in kbytes
 
-    public $run_script = '/lib/run.sh %s %s %s %s %s %s %s %s %s %s %s %s';
+    public $run_script = '/lib/run.sh %s %s %s %s %s %s %s %s %s';
     public $timeout_script = '/lib/timeout/timeout';
 
 //    -i, --ignore-case
@@ -44,7 +44,7 @@ BEGIN;
 //           ignore all white space
 //    -B, --ignore-blank-lines
 //           ignore changes whose lines are all blank
-    public $diff_command = 'diff -qiEZbwB';
+    public $diff_command = 'diff -qiEZbwB %s %s';
 
     public $dir_bin = '/data/bin';
     public $dir_input = '/data/input';
