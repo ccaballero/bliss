@@ -24,11 +24,18 @@ class Runner
         $command = sprintf($config->run_script,
             $config->time_limit,
             $config->memory_limit,
-            $config->dir_bin . '/' . $name,
-            $config->dir_input . '/' . $name . '.in'
+            $config->dir_bin . '/' . $name . '/' . $name,
+            $config->dir_input . '/' . $name . '.in',
+            $config->dir_bin . '/' . $name . '/' . $name . '.out',
+            $config->dir_bin . '/' . $name . '/' . $name . '.time',
+            $config->dir_bin . '/' . $name . '/' . $name . '.err'
         );
 
         return Runner::exec($command);
+    }
+
+    public static function runCPP($name, $config) {
+        return Runner::runC($name, $config);
     }
 
     private static function exec($command) {

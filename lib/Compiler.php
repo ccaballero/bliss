@@ -23,6 +23,8 @@ class Compiler
     public static function compileC($name, $config) {
         $command = sprintf($config->c_compiler,
             $config->dir_bin . '/' . $name,
+            $config->dir_bin . '/' . $name,
+            $config->dir_bin . '/' . $name . '/' . $name,
             $config->dir_problems . '/' . $name . '.c'
         );
 
@@ -32,6 +34,8 @@ class Compiler
     public static function compileCPP($name, $config) {
         $command = sprintf($config->cpp_compiler,
             $config->dir_bin . '/' . $name,
+            $config->dir_bin . '/' . $name,
+            $config->dir_bin . '/' . $name . '/' . $name,
             $config->dir_problems . '/' . $name . '.cpp'
         );
 

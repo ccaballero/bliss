@@ -5,8 +5,19 @@ defined('APP_PATH')
 
 class Config {
 
-    public $c_compiler = 'gcc -lm -o %s %s > /dev/stdout 2> /dev/stdout';
-    public $cpp_compiler = 'g++ -lm -o %s %s > /dev/stdout 2> /dev/stdout';
+    public $c_compiler =<<<BEGIN
+if [ ! -d "%s" ]; then
+    mkdir %s;
+fi
+gcc -lm -o %s %s > /dev/stdout 2> /dev/stdout
+BEGIN;
+
+    public $cpp_compiler =<<<BEGIN
+if [ ! -d "%s" ]; then
+    mkdir %s;
+fi
+g++ -lm -o %s %s > /dev/stdout 2> /dev/stdout
+BEGIN;
 
     public $java_compiler =<<<BEGIN
 if [ ! -d "%s" ]; then
@@ -18,7 +29,7 @@ BEGIN;
     public $time_limit = '2'; // in seconds
     public $memory_limit = '1024'; // in kbytes
 
-    public $run_script = 'run.sh %s %s %s %s';
+    public $run_script = 'run.sh %s %s %s %s %s %s %s';
 
     public $dir_bin;
     public $dir_input;
