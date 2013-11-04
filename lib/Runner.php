@@ -30,7 +30,10 @@ class Runner
             $config->dir_bin . '/' . $name . '/' . $name . '.out',
             $config->dir_bin . '/' . $name . '/' . $name . '.time',
             $config->dir_bin . '/' . $name . '/' . $name . '.err.1',
-            $config->dir_bin . '/' . $name . '/' . $name . '.err.2'
+            $config->dir_bin . '/' . $name . '/' . $name . '.err.2',
+            $config->diff_command,
+            $config->dir_output . '/' . $name . '.out',
+            $config->dir_bin . '/' . $name . '/' . $name . '.diff'
         );
 
         return Runner::exec($command);
